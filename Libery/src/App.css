@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.08) 0%, rgba(255, 133, 162, 0.08) 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+#root {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0.8rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #ff5722;
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h2 {
+  color: white;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff85a2 100%);
+  font-size: 1.2rem;
+  margin: 0.4rem 0 0.4rem 0;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  font-weight: 700;
+}
+
+/* ברכת שלום */
+.greeting {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff85a2 100%);
+  color: white;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  margin: 0.4rem 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.35);
+  animation: slideIn 0.5s ease-out;
+  letter-spacing: 0.5px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* קבוצת כפתורים */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.7rem;
+  margin: 0.8rem 0;
+  flex-wrap: wrap;
+}
+
+.button-group button {
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 2px solid #ff6b35;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: white;
+  color: #ff6b35;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.2);
+}
+
+.button-group button:hover {
+  background-color: #ff6b35;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(255, 107, 53, 0.5);
+}
+
+.button-group button.active {
+  background-color: #ff6b35;
+  color: white;
+  box-shadow: 0 8px 18px rgba(255, 107, 53, 0.7);
+}
+
+.button-group button:disabled {
+  background-color: #cccccc;
+  color: #666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* טופס הספרנית */
+.librarian-form {
+  background: white;
+  padding: 1.3rem;
+  border-radius: 10px;
+  margin: 0.6rem auto;
+  max-width: 350px;
+  box-shadow: 0 8px 25px rgba(255, 107, 53, 0.2);
+  border: 2px solid #ff6b35;
+  animation: fadeIn 0.4s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.librarian-form label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-weight: bold;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.librarian-form input {
+  width: 100%;
+  padding: 0.7rem;
+  margin-top: 0.3rem;
+  border: 2px solid #ff6b35;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: #fff9f7;
+}
+
+.librarian-form input:focus {
+  outline: none;
+  border-color: #ff85a2;
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.4);
+  background: white;
+}
+
+.librarian-form button {
+  width: 100%;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff85a2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+}
+
+.librarian-form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255, 107, 53, 0.5);
+}
+
+/* תוכן (ספרים וסופרים) */
+.content {
+  background: white;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-top: 0.6rem;
+  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15);
+  border: 2px solid rgba(255, 107, 53, 0.2);
+  max-height: none;
+  overflow: visible;
+}
+
+.content ul {
+  list-style: none;
+  margin: 0.8rem 0;
+}
+
+.content li {
+  background: linear-gradient(135deg, #fdf3f0 0%, #fce8ef 100%);
+  padding: 0.8rem 1.2rem;
+  margin: 0.6rem auto;
+  max-width: 450px;
+  border-radius: 8px;
+  border-left: 5px solid #ff6b35;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.15);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.content li:hover {
+  background: linear-gradient(135deg, #ff6b35 0%, #ff85a2 100%);
+  color: white;
+  transform: translateX(8px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(255, 107, 53, 0.4);
+}
+
+/* טופס הוספת ספר */
+form {
+  background: #fff9f7;
+  padding: 1.3rem;
+  border-radius: 10px;
+  max-width: 450px;
+  margin: 0.6rem auto 0.8rem;
+  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.12);
+  border: 2px solid rgba(255, 107, 53, 0.15);
+}
+
+form input {
+  display: block;
+  width: 100%;
+  padding: 0.7rem;
+  margin: 0.6rem 0;
+  border: 2px solid #ff6b35;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: white;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #ff85a2;
+  box-shadow: 0 0 12px rgba(255, 107, 53, 0.35);
+  background-color: #fffbf9;
+}
+
+form button {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #ff6b35 0%, #ff85a2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  margin-top: 0.4rem;
+}
+
+form button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(255, 107, 53, 0.5);
+}
+
+form button:active {
+  transform: translateY(-1px);
+}
