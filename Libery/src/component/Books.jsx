@@ -1,17 +1,29 @@
 import { addNewBook, getBooks } from "../data/books";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 
 function Books() {
   const [books, setBooks] = useState([]);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const loadTasks = async () => {
+    setLoading(true);
+    try {
+      const books = await getBooks();
+      setBooks(books);
+      setError("");
+    } catch (error) {
+      console.log('Something bad happened', error);
+      setError("Failed to load books. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    let mounted = true;
-    getBooks().then((data) => {
-      if (mounted) setBooks(data);
-    });
-    return () => { mounted = false };
+    loadTasks();
   }, []);
 
   const addBook = (event) => {
@@ -21,12 +33,16 @@ function Books() {
       title: title,
       author: author,
     };
-
-    // קוראים לפונקציה שמדמה "הוספה בצד השרת" ומקבלים את המטה-מעודכן
+    try{
     addNewBook(newBook).then((updatedBooks) => {
       setBooks(updatedBooks);
       setTitle("");
+      setAuthor("");
     });
+    } catch (error) {
+      console.log('Failed to add book', error);
+      setError("Failed to add book. Please try again later.");
+    }
   };
 
   return (
